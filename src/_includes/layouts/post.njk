@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+---
+<article>
+  <header class="post-header grid-paper">
+    <div class="wrap">
+      <div class="meta mono">
+        {% if difficulty %}<span class="difficulty {{ difficulty | lower }}">{{ difficulty }}</span>{% endif %}
+        {% if problemNumber %}<span class="problem-number">#{{ problemNumber }}</span> &middot; {% endif %}
+        {% if date %}{{ date | readableDate }} &middot; {% endif %}{{ readTime or "6 min read" }}
+      </div>
+      <h1>{{ title }}</h1>
+      {% if dek %}<p class="dek">{{ dek }}</p>{% endif %}
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="post-body">
+      {% include "partials/ad-slot.njk" %}
+
+      {{ content | safe }}
+
+      {% include "partials/ad-slot.njk" %}
+    </div>
+
+    <div class="post-footer">
+      <a href="/">&larr; Back to all builds</a>
+    </div>
+  </div>
+</article>

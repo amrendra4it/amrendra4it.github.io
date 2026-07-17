@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: Home
+permalink: /
+---
+<section class="hero grid-paper">
+  <div class="wrap">
+    <span class="eyebrow">{{ site.tagline }}</span>
+    <h1>Build logs, not listicles.</h1>
+    <p class="lede">Step-by-step tutorials for building real, working projects — with full code, no filler. Pick a build and start shipping.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <ul class="post-list">
+    {% for post in collections.posts %}
+    <li class="post-card blueprint-frame">
+      <div class="meta">
+        <span class="rev">REV {{ 100 + loop.index }}</span>
+        &middot; {{ post.data.date | readableDate }}
+        &middot; {{ post.data.readTime or "6 min read" }}
+      </div>
+      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      <p class="excerpt">{{ post.data.dek }}</p>
+      {% if post.data.tags %}
+      <div class="tags">
+        {% for tag in post.data.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</main>

@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+title: LeetCode Solutions
+permalink: /leetcode/
+---
+<section class="hero grid-paper">
+  <div class="wrap">
+    <span class="eyebrow">// solved &amp; explained</span>
+    <h1>LeetCode Solutions</h1>
+    <p class="lede">Clean, explained solutions — approach, code, and time/space complexity for each. Problem statements are paraphrased; follow the link to solve the original on LeetCode.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <ul class="post-list">
+    {% for post in collections.leetcode %}
+    <li class="post-card blueprint-frame">
+      <div class="meta">
+        {% if post.data.difficulty %}<span class="difficulty {{ post.data.difficulty | lower }}">{{ post.data.difficulty }}</span>{% endif %}
+        {% if post.data.problemNumber %}<span class="problem-number">#{{ post.data.problemNumber }}</span>{% endif %}
+        &middot; {{ post.data.readTime or "5 min read" }}
+      </div>
+      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      <p class="excerpt">{{ post.data.dek }}</p>
+      {% if post.data.tags %}
+      <div class="tags">
+        {% for tag in post.data.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </li>
+    {% else %}
+    <li class="post-card blueprint-frame">
+      <p class="excerpt">No solutions posted yet — check back soon.</p>
+    </li>
+    {% endfor %}
+  </ul>
+</main>
