@@ -20,7 +20,7 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/ads.txt");   // add this
-
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
   // Just the posts tagged "leetcode", newest first — powers /leetcode/
   eleventyConfig.addCollection("leetcode", (collectionApi) => {
     return collectionApi
